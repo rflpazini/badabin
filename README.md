@@ -1,4 +1,4 @@
-# badabin 🧙🏻‍♂️
+# badabin 🧙🏻‍♂️ [![Build Status](https://travis-ci.org/rflpazini/badabin.svg?branch=master)](https://travis-ci.org/rflpazini/badabin)
 Want to have some answers to your midness questions? Badabin will help you with...
 
 Just an API running as a microservice in a docker container that create great responses . It was used in a demonstration on my University, talking about "Agile development".

@@ -15,7 +15,7 @@ public class HelloRouterTest {
   @Autowired WebTestClient webTestClient;
 
   @Test
-  public void testExampleWithParameter() {
+  public void testBadabinEndPoint_withUrlParameter() {
 
     this.webTestClient
         .get()
@@ -24,11 +24,11 @@ public class HelloRouterTest {
         .expectStatus()
         .isOk()
         .expectBody()
-        .jsonPath("content", "Welcome to a world of surprises! Rafael");
+        .jsonPath("content", "Welcome to a world of surprises, Rafael");
   }
 
   @Test
-  public void testExampleWithoutParameter() {
+  public void testBadabinEndPoint_withoutParameter() {
     this.webTestClient
         .get()
         .uri("/badabin")
@@ -36,11 +36,11 @@ public class HelloRouterTest {
         .expectStatus()
         .isOk()
         .expectBody()
-        .jsonPath("content", "Welcome to a world of surprises! Stranger...");
+        .jsonPath("content", "Welcome to a world of surprises, Stranger...");
   }
 
   @Test
-  public void testExampleWithError() {
+  public void testBadabinEndPoint_withError() {
     this.webTestClient.get().uri("/badabin/something").exchange().expectStatus().isNotFound();
   }
 }

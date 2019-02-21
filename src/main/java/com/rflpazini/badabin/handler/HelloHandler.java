@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class HelloHandler {
 
-  private static final String template = "Welcome to a world of surprises! %s";
+  private static final String template = "Welcome to a world of surprises, %s";
   private final AtomicLong counter = new AtomicLong();
 
   public Mono<ServerResponse> sayHello(ServerRequest request) {
