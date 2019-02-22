@@ -26,4 +26,4 @@ comment: # configuration of the details the bot will comment on the PR
   require_head: no       # [yes :: must have a head report to post]
   branches: null
 ignore:
-  - "src/main/java/com/rflpazini/badabin/BadgstabinApplication.java"
+  - "src/main/java/com/rflpazini/badabin/BadabinApplication.java"
