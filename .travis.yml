@@ -28,7 +28,7 @@ jobs:
       script:
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - docker-compose up --build -d
-        - docker build -t badabin:$TRAVIS_COMMIT .
+        - docker build -t badabin .
         - docker images
-        - docker tag badabin:$TRAVIS_COMMIT $DOCKER_USERNAME/badabin
+        - docker tag badabin $DOCKER_USERNAME/badabin
         - docker push $DOCKER_USERNAME/badabin
