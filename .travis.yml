@@ -24,13 +24,11 @@ jobs:
           - $HOME/.gradle/caches/
           - $HOME/.gradle/wrapper/
 
-
     - stage: Build docker image
       script:
-        - export COMMIT=${TRAVIS_COMMIT::6}
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         - docker-compose up --build -d
-        - docker build -t badabin:${COMMIT} .
+        - docker build -t badabin:$TRAVIS_COMMIT .
         - docker images
-        - docker tag badabin:${COMMIT} $DOCKER_USERNAME/badabin
+        - docker tag badabin:$TRAVIS_COMMIT $DOCKER_USERNAME/badabin
         - docker push $DOCKER_USERNAME/badabin
