@@ -27,4 +27,10 @@ jobs:
 
     - stage: Build docker image
       script:
-        - echo "building docker image..."
+        - COMMIT=${TRAVIS_COMMIT::6}
+        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+        - docker-compose up --build -d
+        - docker build -t badabin:${COMMIT} .
+        - docker images
+        - docker tag badabin:${COMMIT} $DOCKER_USERNAME/badabin
+        - docker push $DOCKER_USERNAME/badabin

@@ -4,18 +4,18 @@ services:
   badabin:
     build: .
     restart: always
-    container_name: badabin-container
+    container_name: badabin
     ports:
       - 8080:8080
     working_dir: /
     depends_on:
-      - badabin-mongo
+      - badabin-db
 
-  badabin-mongo:
+  badabin-db:
     image: mongo
-    container_name: badabin-mongo
-    hostname: badabin-mongo
+    container_name: badabin-db
+    hostname: badabin-db
     volumes:
-      - $HOME/data/badabin-mongo-data:/data/db
-      - $HOME/data/badabin-mongo-bkp:/data/bkp
+      - $HOME/data/badabin-db-data:/data/db
+      - $HOME/data/badabin-db-bkp:/data/bkp
     restart: always
