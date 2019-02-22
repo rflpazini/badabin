@@ -25,9 +25,11 @@ jobs:
           - $HOME/.gradle/wrapper/
 
     - stage: Build docker image
+      before_script:
+        - chmod +x gradlew
       script:
+        - ./gradlew bootJar
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker-compose up --build -d
         - docker build -t badabin .
         - docker images
         - docker tag badabin $DOCKER_USERNAME/badabin
