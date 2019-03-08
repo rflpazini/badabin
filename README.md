@@ -11,7 +11,11 @@ To install this project on your machine, just follow two steps:
 ```
 $ git clone git@github.com:rflpazini/badabin.git
 ```
- 2 - Run `docker-compose` command:
+ 2 - Build `.jar` file of our application:
+```
+$ ./gradlew clean bootJar
+```
+ 3 - Run `docker-compose` command:
 ```
 $ docker-compose up --build
 ```
