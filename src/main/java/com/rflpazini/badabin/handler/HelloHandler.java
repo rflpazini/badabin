@@ -21,7 +21,12 @@ public class HelloHandler {
     String name = request.queryParam("name").orElse("Stranger...");
 
     Greeting welcomeGreeting =
+<<<<<<< Updated upstream
         new Greeting(counter.incrementAndGet(), String.format(template, name), "Badadin", "v0.1");
+=======
+        new Greeting(
+            counter.incrementAndGet(), String.format(TEMPLATE_MESSAGE, name), "Badabin", "v0.1");
+>>>>>>> Stashed changes
 
     return ok().contentType(MediaType.APPLICATION_JSON)
         .body(BodyInserters.fromObject(welcomeGreeting));
