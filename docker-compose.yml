@@ -18,4 +18,4 @@ services:
     volumes:
       - $HOME/data/badabin-mongo-data:/data/db
       - $HOME/data/badabin-mongo-bkp:/data/bkp
-    restart: always
+    restart: alwaysit
