@@ -6,8 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Builder
-@Getter
 @Setter
+@Getter
 @RequiredArgsConstructor
 public class Greeting {
 

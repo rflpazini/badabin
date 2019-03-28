@@ -1,7 +1,7 @@
 # badabin 🧙🏻‍♂️ [![Build Status](https://travis-ci.org/rflpazini/badabin.svg?branch=master)](https://travis-ci.org/rflpazini/badabin) [![codecov](https://codecov.io/gh/rflpazini/badabin/branch/master/graph/badge.svg)](https://codecov.io/gh/rflpazini/badabin)
-Want to have some answers to your midness questions? Badabin will help you with...
+Want to buy something? Badabin will help you...
 
-Just an API running as a microservice in a docker container that create great responses . It was used in a demonstration on my University, talking about "Agile development".
+Just an API running as a microservice that sends messages to a queue and then register new orders. It was used in a demonstration at UNIP, talking about "Agile development".
 
 ## Installation
 
