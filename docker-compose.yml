@@ -10,6 +10,7 @@ services:
     working_dir: /
     depends_on:
       - badabin-mongo
+      - activemq
 
   badabin-mongo:
     image: mongo
@@ -19,3 +20,6 @@ services:
       - $HOME/data/badabin-mongo-data:/data/db
       - $HOME/data/badabin-mongo-bkp:/data/bkp
     restart: always
+
+  activemq:
+    image: webcenter/activemq:5.14.3
