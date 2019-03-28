@@ -6,18 +6,18 @@ codecov:
 
 coverage:
   status:
-    patch: # minimum coverage needed based only on the new code introduced on the PR
-      default: off
-      pr_coverage:
-        target: 95%
-    project:
-      default: off
-      minimum: # minimum target of coverage needed to pass the check
-        target: 95%
-      decrement: # maximum decrement of coverage allowed
-        target: auto
-        threshold: 0.2%
-        if_not_found: success
+#    patch: # minimum coverage needed based only on the new code introduced on the PR
+#      default: off
+#      pr_coverage:
+#        target: 95%
+#    project:
+#      default: off
+#      minimum: # minimum target of coverage needed to pass the check
+#        target: 95%
+#      decrement: # maximum decrement of coverage allowed
+#        target: auto
+#        threshold: 0.2%
+#        if_not_found: success
 comment: # configuration of the details the bot will comment on the PR
   layout: "header, diff, tree, changes"
   behavior: default
