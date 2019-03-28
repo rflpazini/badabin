@@ -13,14 +13,12 @@ public class ProductService {
 
   private final ProductRepository mRepository;
 
-  public Mono<Product> findOrCreate(Product product) {
-    return Mono.justOrEmpty(product)
-        .flatMap(it -> findById(product.getId()))
-        .flatMap(mRepository::save);
+  public Mono<Product> create(Product product) {
+    return Mono.just(product).flatMap(mRepository::save);
   }
 
   public Mono<Product> findById(long id) {
-    return this.mRepository.findById(id);
+    return Mono.just(id).flatMap(mRepository::findById);
   }
 
   public Flux<Product> findAll() {
