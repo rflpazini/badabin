@@ -17,7 +17,8 @@ public class SaleRouter {
   @Bean
   public RouterFunction<ServerResponse> saleRoute(SaleHandler saleHandler) {
     return route(POST("/sale").and(accept(APPLICATION_JSON)), saleHandler::postMessage)
-      .andRoute(GET("/sale"), saleHandler::getMessages);
+      .andRoute(GET("/sale"), saleHandler::getMessages)
+      .andRoute(GET("/ab"), saleHandler::hi);
   }
 }
 

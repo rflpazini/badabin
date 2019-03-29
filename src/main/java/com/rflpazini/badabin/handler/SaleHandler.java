@@ -2,6 +2,7 @@ package com.rflpazini.badabin.handler;
 
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
+import com.mongodb.connection.Server;
 import com.rflpazini.badabin.config.QueueService;
 import com.rflpazini.badabin.domain.QueueStats;
 import java.util.UUID;
@@ -28,6 +29,10 @@ public class SaleHandler {
     String result = this.postToQueue(qt);
 
     return ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromObject(result));
+  }
+
+  public Mono<ServerResponse> hi(ServerRequest request) {
+    return ok().contentType(MediaType.APPLICATION_JSON_UTF8).body(BodyInserters.fromObject("hi"));
   }
 
   public Mono<ServerResponse> getMessages(ServerRequest request) {
