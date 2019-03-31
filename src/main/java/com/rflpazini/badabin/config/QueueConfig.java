@@ -1,5 +1,6 @@
 package com.rflpazini.badabin.config;
 
+import com.rflpazini.badabin.service.QueueService;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

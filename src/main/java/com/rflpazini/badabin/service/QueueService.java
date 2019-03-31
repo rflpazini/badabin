@@ -1,4 +1,4 @@
-package com.rflpazini.badabin.config;
+package com.rflpazini.badabin.service;
 
 import java.util.Collections;
 import java.util.StringJoiner;
@@ -65,6 +65,6 @@ public class QueueService implements MessageListener {
 
   private String formatMessageLog(String customMessage, ActiveMQTextMessage queueMessage)
       throws JMSException {
-    return new StringJoiner(":").add(queueMessage.getText()).toString();
+    return new StringJoiner(":").add(customMessage).add(queueMessage.getText()).toString();
   }
 }
