@@ -27,4 +27,10 @@ public class HelloHandler {
     return ok().contentType(MediaType.APPLICATION_JSON)
         .body(BodyInserters.fromObject(welcomeGreeting));
   }
+
+  public Mono<ServerResponse> saySomething(ServerRequest request) {
+    return ok().contentType(MediaType.APPLICATION_JSON)
+      .body(BodyInserters.fromObject("UNI-FACEF"));
+  }
+
 }
