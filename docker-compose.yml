@@ -13,9 +13,9 @@ services:
 
   badabin-mongo:
     image: mongo
+    restart: always
     container_name: badabin-mongo
     hostname: badabin-mongo
     volumes:
       - $HOME/data/badabin-mongo-data:/data/db
       - $HOME/data/badabin-mongo-bkp:/data/bkp
-    restart: always
