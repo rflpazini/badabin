@@ -14,8 +14,6 @@ public class HelloRouter {
 
   @Bean
   public RouterFunction<ServerResponse> helloRoute(HelloHandler helloHandler) {
-    return RouterFunctions.route(
-            GET("/badabin"), helloHandler::sayHello)
-      .andRoute(GET("/graal"), helloHandler::saySomething);
-  }
+    return RouterFunctions.route(GET("/badabin"), helloHandler::sayHello);
+    }
 }

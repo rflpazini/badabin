@@ -1,5 +1,6 @@
 plugins {
   id 'org.springframework.boot' version '2.1.5.RELEASE'
+  id 'me.champeau.gradle.jmh' version '0.4.8'
   id 'java'
 }
 
@@ -8,6 +9,8 @@ apply plugin: 'jacoco'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'me.champeau.gradle.jmh'
+apply plugin: 'scala'
 
 group = 'com.rflpazini'
 version = '0.1-SNAPSHOT'
@@ -23,6 +26,7 @@ dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-activemq'
   implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
   implementation 'org.springframework.boot:spring-boot-starter-webflux'
+  implementation 'org.openjdk.jmh:jmh-core:1.21'
 
   compileOnly 'org.projectlombok:lombok:1.18.8'
   annotationProcessor 'org.projectlombok:lombok:1.18.6'
@@ -31,16 +35,38 @@ dependencies {
   testImplementation 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.2.0'
   testImplementation 'io.projectreactor:reactor-test'
   testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
+  testImplementation 'org.openjdk.jmh:jmh-generator-annprocess:1.21'
+  testImplementation 'io.gatling.highcharts:gatling-charts-highcharts:3.1.2'
 
   testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
 }
-
 
 jacocoTestReport {
   reports {
     xml.enabled true
     html.enabled true
   }
+}
+
+task testLoad(type: JavaExec) {
+  description = 'Test load the Spring Boot web service with Gatling'
+  group = 'Load Test'
+  classpath = sourceSets.test.runtimeClasspath
+  jvmArgs = [
+    // workaround for https://github.com/gatling/gatling/issues/2689
+    "-Dgatling.core.directory.binaries=${sourceSets.test.output.classesDirs.toString()}",
+    "-Dlogback.configurationFile=${logbackGatlingConfig()}"
+  ]
+  main = 'io.gatling.app.Gatling'
+  args = [
+    '--simulation', 'webservice.gatling.simulation.WebServiceTest',
+    '--results-folder', "${buildDir}/gatling-results",
+    '--binaries-folder', sourceSets.test.output.classesDirs.toString() // ignored because of above bug
+  ]
+}
+
+def logbackGatlingConfig() {
+  return sourceSets.test.resources.find { it.name == 'logback-gatling.xml'};
 }
 
 check.dependsOn jacocoTestReport
