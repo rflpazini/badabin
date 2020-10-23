@@ -16,6 +16,6 @@ public class HelloRouter {
   public RouterFunction<ServerResponse> helloRoute(HelloHandler helloHandler) {
     return RouterFunctions.route(
             GET("/badabin"), helloHandler::sayHello)
-      .andRoute(GET("/ab"), helloHandler::saySomething);
+      .andRoute(GET("/newEndpoint"), helloHandler::saySomething);
   }
 }
